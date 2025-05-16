@@ -1,0 +1,346 @@
+output_dir: results/eukarya-filter/svm-evals/esm-650m
+
+lm_config:
+  name: ESM
+  pretrained_model_name_or_path: facebook/esm2_t33_650M_UR50D
+  half_precision: true
+
+  dataloader_config:
+    batch_size: 64
+
+save_downstream_models: true
+
+parsl_config:
+    name: singlenode
+    available_accelerators: 4
+    retries: 3
+    label: htex
+
+###################################################
+# Note! This is every possible task with eukarya  #
+###################################################
+task_configs:
+  #### Pfam - no domain ####
+  # Phylum
+  - name: PfamTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-phylum-top0.80-pfam
+
+  - name: PfamTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-phylum-bottom0.20-pfam
+
+  # Class
+  - name: PfamTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-class-top0.80-pfam
+
+  - name: PfamTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-class-bottom0.20-pfam
+
+  # Order
+  - name: PfamTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-order-top0.80-pfam
+
+  - name: PfamTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-order-bottom0.20-pfam
+
+  # Family
+  - name: PfamTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-family-top0.80-pfam
+
+  - name: PfamTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-family-bottom0.20-pfam
+
+  # Genus
+  - name: PfamTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-genus-top0.80-pfam
+
+  - name: PfamTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-genus-bottom0.20-pfam
+
+  ##################################
+  #### EC - no domain - level 0-3 ####
+  ##################################
+  #### EC - no domain ####
+  # Phylum
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-phylum-top0.80-ec0
+
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-phylum-bottom0.20-ec0
+
+  # Class
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-class-top0.80-ec0
+
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-class-bottom0.20-ec0
+
+  # Order
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-order-top0.80-ec0
+
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-order-bottom0.20-ec0
+
+  # Family
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-family-top0.80-ec0
+
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-family-bottom0.20-ec0
+
+  # Genus
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-genus-top0.80-ec0
+
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-genus-bottom0.20-ec0
+  # Phylum
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-phylum-top0.80-ec1
+
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-phylum-bottom0.20-ec1
+
+  # Class
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-class-top0.80-ec1
+
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-class-bottom0.20-ec1
+  # Order
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-order-top0.80-ec1
+
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-order-bottom0.20-ec1
+
+  # Family
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-family-top0.80-ec1
+
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-family-bottom0.20-ec1
+
+  # Genus
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-genus-top0.80-ec1
+
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-genus-bottom0.20-ec1
+
+  #### EC - no domain - level 2####
+  # Phylum
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-phylum-top0.80-ec2
+
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-phylum-bottom0.20-ec2
+
+  # Class
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-class-top0.80-ec2
+
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-class-bottom0.20-ec2
+
+  # Order
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-order-top0.80-ec2
+
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-order-bottom0.20-ec2
+
+  # Family
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-family-top0.80-ec2
+
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-family-bottom0.20-ec2
+
+  # Genus
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-genus-top0.80-ec2
+
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-genus-bottom0.20-ec2
+
+  #### EC - no domain - level 3 ####
+  # Phylum
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-phylum-top0.80-ec3
+
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-phylum-bottom0.20-ec3
+
+  # Class
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-class-top0.80-ec3
+
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-class-bottom0.20-ec3
+
+  # Order
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-order-top0.80-ec3
+
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-order-bottom0.20-ec3
+
+  # Family
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-family-top0.80-ec3
+
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-family-bottom0.20-ec3
+
+  # Genus
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-genus-top0.80-ec3
+
+  - name: ECTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-genus-bottom0.20-ec3
+
+  ######################################
+  #### Gene3D - no domain - level 0-3 ####
+  ######################################
+  #### Gene3D - no domain - level 0 ####
+  # Phylum
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-phylum-top0.80-gene3d0
+
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-phylum-bottom0.20-gene3d0
+
+  # Class
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-class-top0.80-gene3d0
+
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-class-bottom0.20-gene3d0
+
+  # Order
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-order-top0.80-gene3d0
+
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-order-bottom0.20-gene3d0
+
+  # Family
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-family-top0.80-gene3d0
+
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-family-bottom0.20-gene3d0
+
+  # Genus
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-genus-top0.80-gene3d0
+
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-genus-bottom0.20-gene3d0
+
+  #### Gene3D - no domain - level 1 ####
+  # Phylum
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-phylum-top0.80-gene3d1
+
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-phylum-bottom0.20-gene3d1
+
+  # Class
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-class-top0.80-gene3d1
+
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-class-bottom0.20-gene3d1
+
+  # Order
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-order-top0.80-gene3d1
+
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-order-bottom0.20-gene3d1
+
+  # Family
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-family-top0.80-gene3d1
+
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-family-bottom0.20-gene3d1
+
+  # Genus
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-genus-top0.80-gene3d1
+
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-genus-bottom0.20-gene3d1
+
+  #### Gene3D - no domain - level 2 ####
+  # Phylum
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-phylum-top0.80-gene3d2
+
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-phylum-bottom0.20-gene3d2
+  # Class
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-class-top0.80-gene3d2
+
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-class-bottom0.20-gene3d2
+
+  # Order
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-order-top0.80-gene3d2
+
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-order-bottom0.20-gene3d2
+
+  # Family
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-family-top0.80-gene3d2
+
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-family-bottom0.20-gene3d2
+
+  # Genus
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-genus-top0.80-gene3d2
+
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-genus-bottom0.20-gene3d2
+
+  #### Gene3D - no domain - level 3 ####
+  # Phylum
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-phylum-top0.80-gene3d3
+
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-phylum-bottom0.20-gene3d3
+
+  # Class
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-class-top0.80-gene3d3
+
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-class-bottom0.20-gene3d3
+
+  # Order
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-order-top0.80-gene3d3
+
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-order-bottom0.20-gene3d3
+  # Family
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-family-top0.80-gene3d3
+
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-family-bottom0.20-gene3d3
+
+  # Genus
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-genus-top0.80-gene3d3
+
+  - name: Gene3DTaxonomyBias
+    dataset_name_or_path: biasinthebranches/uniprot-taxonomy-splits:eukaryota-genus-bottom0.20-gene3d3

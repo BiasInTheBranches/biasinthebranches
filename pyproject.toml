@@ -1,0 +1,181 @@
+[build-system]
+requires = ["setuptools>=64.0", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "harness"
+version = "0.1.0"
+authors = [
+    {name = "Anonymous"},
+]
+description = "Protein/DNA Language Model benchmarks."
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: Implementation :: CPython",
+]
+dependencies = [
+    "torch",
+    "transformers",
+    "datasets",
+    "Bio",
+    "einops",
+    "pydantic",
+    "scikit-learn==1.5.0",
+    "h5py",
+    "parsl",
+    "PyYAML",
+    "matplotlib",
+    "pandas",
+    "scipy",
+    "seaborn",
+]
+
+[project.optional-dependencies]
+dev = [
+    "covdefaults>=2.2",
+    "coverage",
+    "mypy",
+    "pre-commit",
+    "pytest",
+    "pytest-cov",
+    "ruff",
+    "tox",
+    "virtualenv",
+    "typer-cli",
+    "types-PyYAML",
+]
+
+# Model specific installs
+ankh = [
+    'ankh',
+]
+calm = [
+    'calM @ git+https://github.com/oxpig/CaLM.git',
+]
+esm =[
+    "esm==3.1.1",
+]
+
+all = [
+    "harness[dev,ankh,calm,esm]",
+]
+
+
+[tool.codespell]
+skip = """
+.git,
+.github,
+__pycache__,
+build,
+dist,
+.*egg-info
+"""
+
+[tool.coverage.run]
+plugins = ["covdefaults"]
+omit = ["examples"]
+
+[tool.mypy]
+python_version = "3.10"
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_configs = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+module = ["testing.*", "tests.*"]
+allow_incomplete_defs = true
+allow_untyped_defs = true
+
+[tool.ruff]
+# See all rules here: https://beta.ruff.rs/docs/rules
+lint.select = [
+    # pyflakes
+    "F",
+    # pycodestyle
+    "E",
+    # isort
+    "I",
+    # pep8-naming
+    "N",
+    # pydocstyle
+    "D",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-builtins
+    "A",
+    # flake8-commas
+    "COM",
+    # flake8-comprehensions
+    "C4",
+    # flake8-implicit-str-concat
+    "ISC",
+    # flake8-pytest-style
+    "PT",
+    # flake8-quotes
+    "Q",
+    # flake8-debugger
+    "T10",
+    # PyLint
+    "PL",
+    # ruff-specific
+    "RUF",
+]
+line-length = 88
+lint.extend-ignore = []
+target-version = "py310"
+lint.ignore = [
+    "COM812",
+    "ISC001",
+    "D401",
+    "A002",
+    "PLW2901",
+    "RUF012",
+    "N803",  # ignore naming convention for pytest fixtures
+    "N806",  # ignore naming convention for pytest fixtures
+    "PLR0913",  # allow more arguments to functions
+    "RUF001", # String contains ambiguous characters (dashes, underscores, etc.)
+]
+
+[tool.ruff.lint.pycodestyle]
+ignore-overlong-task-comments = true
+
+[tool.ruff.lint.flake8-pytest-style]
+parametrize-values-type = "tuple"
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"
+multiline-quotes = "double" # silence warning
+
+[tool.ruff.format]
+indent-style = "space"
+quote-style = "single"
+
+[tool.ruff.lint.isort]
+force-single-line = true
+known-first-party = ["pdfwf", "test", "testing"]
+order-by-type = false
+required-imports = ["from __future__ import annotations"]
+
+[tool.ruff.lint.per-file-ignores]
+"*/__init__.py" = ["F401"]
+"*/*_test.py" = ["D10"]
+"*/*/dash_reporter.py" = ["E501", "PLR0912", "PLR0915"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.setuptools.packages.find]
+exclude = ["tests*", "testing*"]
+namespaces = false
