@@ -242,7 +242,8 @@ class ESMC(LM):
         from esm.tokenization.sequence_tokenizer import EsmSequenceTokenizer
 
         # Set the cache directory as its not exposed by the esm api
-        os.environ['HF_HOME'] = config.cache_dir
+        if config.cache_dir:
+            os.environ['HF_HOME'] = config.cache_dir
 
         # Load the model
         model = ESMC.from_pretrained(config.pretrained_model_name_or_path)
